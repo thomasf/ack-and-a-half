@@ -395,7 +395,7 @@ DIRECTORY is the directory in which to start searching.  If called
 interactively, it is determined by `ack-and-a-half-project-root-file-patterns`.
 The user is only prompted, if `ack-and-a-half-prompt-for-directory' is set.`"
   (interactive (ack-and-a-half-interactive))
-  (let ((type (ack-type)))
+  (let ((type (ack-and-a-half-type)))
     (if type
         (apply 'ack-and-a-half-run directory regexp (append type (list (ack-and-a-half-shell-quote pattern))))
       (ack-and-a-half pattern regexp directory))))
