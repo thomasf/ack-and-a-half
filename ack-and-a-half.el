@@ -404,17 +404,20 @@ The user is only prompted, if `ack-and-a-half-prompt-for-directory' is set.`"
 (defun ack-and-a-half-find-file (&optional directory)
   "Prompt to find a file found by ack in DIRECTORY."
   (interactive (list (ack-and-a-half-read-dir)))
-  (find-file (expand-file-name (ack-and-a-half-read-file "Find file: "
-                                              (ack-and-a-half-list-files directory))
-                               directory)))
+  (find-file (expand-file-name
+              (ack-and-a-half-read-file
+               "Find file: "
+               (ack-and-a-half-list-files directory))
+              directory)))
 
 ;;;###autoload
 (defun ack-and-a-half-find-file-same (&optional directory)
   "Prompt to find a file found by ack in DIRECTORY."
   (interactive (list (ack-and-a-half-read-dir)))
   (find-file (expand-file-name
-              (ack-and-a-half-read-file "Find file: "
-                                        (apply 'ack-and-a-half-list-files directory (ack-and-a-half-type)))
+              (ack-and-a-half-read-file
+               "Find file: "
+               (apply 'ack-and-a-half-list-files directory (ack-and-a-half-type)))
               directory)))
 
 ;;; End ack-and-a-half.el ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
