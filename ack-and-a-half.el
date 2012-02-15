@@ -61,6 +61,7 @@
 
 (define-compilation-mode ack-and-a-half-mode "Ack"
   "Ack results compilation mode."
+  (set (make-local-variable 'truncate-lines) t)
   (set (make-local-variable 'compilation-disable-input) t)
   (let ((smbl  'compilation-ack-nogroup)
         (pttrn '("^\\([^:\n]+?\\):\\([0-9]+\\):" 1 2)))
