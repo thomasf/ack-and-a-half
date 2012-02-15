@@ -31,3 +31,12 @@ ack-and-a-half was created from
 [full-ack.el](http://nschum.de/src/emacs/full-ack/).  Both had
 features that I liked, but neither was satisfactory on its own.  Thus
 `ack-and-a-half` was born.
+
+Contributors
+============
+
+Many thanks to the following people for their contributions:
+
+* Gleb Peregud
+* Kim van Wyk
+* Ronaldo M. Ferraz
