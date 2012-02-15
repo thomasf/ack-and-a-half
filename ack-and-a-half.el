@@ -62,6 +62,10 @@
 (define-compilation-mode ack-and-a-half-mode "Ack"
   "Ack results compilation mode."
   (set (make-local-variable 'compilation-disable-input) t)
+  (let ((smbl  'compilation-ack-nogroup)
+        (pttrn '("^\\([^:\n]+?\\):\\([0-9]+\\):" 1 2)))
+    (set (make-local-variable 'compilation-error-regexp-alist) (list smbl))
+    (set (make-local-variable 'compilation-error-regexp-alist-alist) (list (cons smbl pttrn))))
   (set (make-local-variable 'compilation-error-face) grep-hit-face))
 
 (defgroup ack-and-a-half nil "Yet another front end for ack."
