@@ -428,3 +428,5 @@ The user is only prompted, if `ack-and-a-half-prompt-for-directory' is set.`"
 ;;; End ack-and-a-half.el ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'ack-and-a-half)
+
+;;; ack-and-a-half.el ends here
