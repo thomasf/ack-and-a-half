@@ -3,7 +3,7 @@
 ;; Copyright (C) 2011 Jacob Helwig
 ;;
 ;; Author: Jacob Helwig <jacob+ack * technosorcery.net>
-;; Version: 0.0.1
+;; Version: 0.1.0
 ;; Homepage: http://technosorcery.net
 ;;
 ;; This file is NOT part of GNU Emacs.
@@ -277,7 +277,7 @@ This is intended to be used in `ack-and-a-half-root-directory-functions'."
             dir
           (read-directory-name "Directory: " dir dir t))
       (or dir
-          (and buffer-file-name (file-name-and-directory buffer-file-name))
+          (and buffer-file-name (file-name-directory buffer-file-name))
           default-directory))))
 
 (defsubst ack-and-a-half-xor (a b)
@@ -300,7 +300,7 @@ This is intended to be used in `ack-and-a-half-root-directory-functions'."
 
 (defun ack-and-a-half-arguments-from-options (regexp)
   (let ((arguments (list "--nocolor" "--nogroup"
-                         (ack-and-a-half-option "smart-case" (eq ack-and-a-half-ignore-case 'smart-case))
+                         (ack-and-a-half-option "smart-case" (eq ack-and-a-half-ignore-case 'smart))
                          (ack-and-a-half-option "env" ack-and-a-half-use-environment))))
     (unless ack-and-a-half-ignore-case
       (push "-i" arguments))
@@ -368,7 +368,7 @@ When optional fourth argument is non-nil, treat the from as a regular expression
 (defun ack-and-a-half-version-string ()
   "Return the ack version string."
   (with-temp-buffer
-    (call-process ack-executable nil t nil "--version")
+    (call-process ack-and-a-half-executable nil t nil "--version")
     (goto-char (point-min))
     (re-search-forward " +")
     (buffer-substring (point) (point-at-eol))))
@@ -428,3 +428,5 @@ The user is only prompted, if `ack-and-a-half-prompt-for-directory' is set.`"
 ;;; End ack-and-a-half.el ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'ack-and-a-half)
+
+;;; ack-and-a-half.el ends here
