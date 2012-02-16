@@ -3,7 +3,7 @@
 ;; Copyright (C) 2011 Jacob Helwig
 ;;
 ;; Author: Jacob Helwig <jacob+ack * technosorcery.net>
-;; Version: 0.0.1
+;; Version: 0.1.0
 ;; Homepage: http://technosorcery.net
 ;;
 ;; This file is NOT part of GNU Emacs.
