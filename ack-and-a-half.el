@@ -277,7 +277,7 @@ This is intended to be used in `ack-and-a-half-root-directory-functions'."
             dir
           (read-directory-name "Directory: " dir dir t))
       (or dir
-          (and buffer-file-name (file-name-and-directory buffer-file-name))
+          (and buffer-file-name (file-name-directory buffer-file-name))
           default-directory))))
 
 (defsubst ack-and-a-half-xor (a b)
@@ -368,7 +368,7 @@ When optional fourth argument is non-nil, treat the from as a regular expression
 (defun ack-and-a-half-version-string ()
   "Return the ack version string."
   (with-temp-buffer
-    (call-process ack-executable nil t nil "--version")
+    (call-process ack-and-a-half-executable nil t nil "--version")
     (goto-char (point-min))
     (re-search-forward " +")
     (buffer-substring (point) (point-at-eol))))
