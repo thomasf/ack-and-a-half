@@ -54,6 +54,7 @@
 (eval-when-compile (require 'cl))
 (require 'compile)
 (require 'grep)
+(require 'thingatpt)
 
 (add-to-list 'debug-ignored-errors
              "^Moved \\(back before fir\\|past la\\)st match$")
@@ -267,7 +268,7 @@ This is intended to be used in `ack-and-a-half-root-directory-functions'."
 
 (defsubst ack-and-a-half-read (regexp)
   (read-from-minibuffer (if regexp "ack pattern: " "ack literal search: ")
-                        nil nil nil
+                        (word-at-point) nil nil
                         (if regexp 'ack-and-a-half-regexp-history 'ack-and-a-half-literal-history)))
 
 (defun ack-and-a-half-read-dir ()
