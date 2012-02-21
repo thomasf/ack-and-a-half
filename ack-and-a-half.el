@@ -268,7 +268,7 @@ This is intended to be used in `ack-and-a-half-root-directory-functions'."
 
 (defsubst ack-and-a-half-read (regexp)
   (read-from-minibuffer (if regexp "ack pattern: " "ack literal search: ")
-                        (word-at-point) nil nil
+                        (symbol-name (symbol-at-point)) nil nil
                         (if regexp 'ack-and-a-half-regexp-history 'ack-and-a-half-literal-history)))
 
 (defun ack-and-a-half-read-dir ()
