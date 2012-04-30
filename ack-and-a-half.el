@@ -73,8 +73,8 @@
   :group 'tools
   :group 'matching)
 
-; TODO Determine how to fall back to using ack-grep if ack is not found.
-(defcustom ack-and-a-half-executable (executable-find "ack")
+(defcustom ack-and-a-half-executable (or (executable-find "ack")
+					 (executable-find "ack-grep"))
   "*The location of the ack executable"
   :group 'ack-and-a-half
   :type 'file)
