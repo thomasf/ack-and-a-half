@@ -3,7 +3,7 @@
 ;; Copyright (C) 2011 Jacob Helwig
 ;;
 ;; Author: Jacob Helwig <jacob+ack * technosorcery.net>
-;; Version: 0.1.0
+;; Version: 0.1.1
 ;; Homepage: http://technosorcery.net
 ;;
 ;; This file is NOT part of GNU Emacs.
@@ -54,6 +54,7 @@
 (eval-when-compile (require 'cl))
 (require 'compile)
 (require 'grep)
+(require 'thingatpt)
 
 (add-to-list 'debug-ignored-errors
              "^Moved \\(back before fir\\|past la\\)st match$")
@@ -265,10 +266,30 @@ This is intended to be used in `ack-and-a-half-root-directory-functions'."
 (defvar ack-and-a-half-regexp-history nil
   "Regular expressions recently searched for with `ack-and-a-half'.")
 
+(defun ack-and-a-half-initial-contents-for-read ()
+  (when (ack-and-a-half-use-region-p)
+    (buffer-substring-no-properties (region-beginning) (region-end))))
+
+(defun ack-and-a-half-default-for-read ()
+  (unless (ack-and-a-half-use-region-p)
+    (thing-at-point 'symbol)))
+
+(defun ack-and-a-half-use-region-p ()
+  (or (and (fboundp 'use-region-p) (use-region-p))
+      (and transient-mark-mode mark-active
+           (> (region-end) (region-beginning)))))
+
 (defsubst ack-and-a-half-read (regexp)
-  (read-from-minibuffer (if regexp "ack pattern: " "ack literal search: ")
-                        nil nil nil
-                        (if regexp 'ack-and-a-half-regexp-history 'ack-and-a-half-literal-history)))
+  (let* ((default (ack-and-a-half-default-for-read))
+         (type (if regexp "pattern" "literal search"))
+         (history-var )
+         (prompt  (if default
+                      (format "ack %s (default %s): " type default)
+                    (format "ack %s: " type))))
+    (read-string prompt
+                 (ack-and-a-half-initial-contents-for-read)
+                 (if regexp 'ack-regexp-history 'ack-literal-history)
+                 default)))
 
 (defun ack-and-a-half-read-dir ()
   (let ((dir (run-hook-with-args-until-success 'ack-and-a-half-root-directory-functions)))
