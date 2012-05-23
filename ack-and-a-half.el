@@ -322,7 +322,8 @@ This is intended to be used in `ack-and-a-half-root-directory-functions'."
 (defun ack-and-a-half-arguments-from-options (regexp)
   (let ((arguments (list "--nocolor" "--nogroup" "--column"
                          (ack-and-a-half-option "smart-case" (eq ack-and-a-half-ignore-case 'smart))
-                         (ack-and-a-half-option "env" ack-and-a-half-use-environment))))
+                         (ack-and-a-half-option "env" ack-and-a-half-use-environment)
+                         "--")))
     (unless ack-and-a-half-ignore-case
       (push "-i" arguments))
     (unless regexp
