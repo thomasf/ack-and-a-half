@@ -365,15 +365,14 @@ When optional fourth argument is non-nil, treat the from as a regular expression
 
 (defun ack-and-a-half-run (directory regexp &rest arguments)
   "Run ack in DIRECTORY with ARGUMENTS."
-  (setq default-directory
-        (if directory
-            (file-name-as-directory (expand-file-name directory))
-          default-directory))
-  (setq arguments (append ack-and-a-half-arguments
-                          (nconc (ack-and-a-half-arguments-from-options regexp)
-                                 arguments)))
-  (compilation-start (mapconcat 'identity (nconc (list ack-and-a-half-executable) arguments) " ")
-                     'ack-and-a-half-mode))
+  (let ((default-directory (if directory
+                               (file-name-as-directory (expand-file-name directory))
+                             default-directory)))
+    (setq arguments (append ack-and-a-half-arguments
+                            (nconc (ack-and-a-half-arguments-from-options regexp)
+                                   arguments)))
+    (compilation-start (mapconcat 'identity (nconc (list ack-and-a-half-executable) arguments) " ")
+                       'ack-and-a-half-mode)))
 
 (defun ack-and-a-half-read-file (prompt choices)
   (if ido-mode
