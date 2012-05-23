@@ -1,6 +1,12 @@
 ;;; ack-and-a-half.el --- Yet another front-end for ack
 ;;
-;; Copyright (C) 2012 Jacob Helwig
+;; Copyright (C) 2012 Jacob Helwig <jacob@technosorcery.net>
+;; Alexey Lebedeff <binarin@binarin.ru>
+;; Andrew Stine <stine.drew@gmail.com>
+;; Gleb Peregud <gleber.p@gmail.com>
+;; Kim van Wyk <vanwykk@gmail.com>
+;; Ronaldo M. Ferraz <ronaldoferraz@gmail.com>
+;; Ryan Thompson <rct@thompsonclan.org>
 ;;
 ;; Author: Jacob Helwig <jacob+ack * technosorcery.net>
 ;; Version: 0.2.0
@@ -8,9 +14,23 @@
 ;;
 ;; This file is NOT part of GNU Emacs.
 ;;
-;; You should have received a copy of the MIT license along with this
-;; program; see the file LICENSE.  If not, please see
-;; http://www.opensource.org/licenses/MIT
+;; Permission is hereby granted, free of charge, to any person obtaining a copy of
+;; this software and associated documentation files (the "Software"), to deal in
+;; the Software without restriction, including without limitation the rights to
+;; use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+;; of the Software, and to permit persons to whom the Software is furnished to do
+;; so, subject to the following conditions:
+;;
+;; The above copyright notice and this permission notice shall be included in all
+;; copies or substantial portions of the Software.
+;;
+;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+;; AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+;; OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+;; SOFTWARE.
 ;;
 ;;; Commentary:
 ;;
