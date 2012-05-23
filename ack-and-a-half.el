@@ -75,7 +75,7 @@
   :group 'matching)
 
 (defcustom ack-and-a-half-executable (or (executable-find "ack")
-					 (executable-find "ack-grep"))
+                                         (executable-find "ack-grep"))
   "*The location of the ack executable"
   :group 'ack-and-a-half
   :type 'file)
