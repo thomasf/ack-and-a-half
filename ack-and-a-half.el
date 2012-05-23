@@ -157,7 +157,7 @@ is used without confirmation.  If it is nil, then the directory is never
 confirmed.  If t, then always prompt for the directory to use."
   :group 'ack-and-a-half
   :type '(choice (const :tag "Don't prompt" nil)
-                 (const :tag "Don't prompt when guessed" 'unless-guessed)
+                 (const :tag "Don't prompt when guessed" unless-guessed)
                  (const :tag "Always prompt" t)))
 
 ;;; Default setting lists ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
