@@ -8,9 +8,10 @@
 ;; Ronaldo M. Ferraz <ronaldoferraz@gmail.com>
 ;; Ryan Thompson <rct@thompsonclan.org>
 ;;
-;; Author: Jacob Helwig <jacob+ack * technosorcery.net>
-;; Version: 0.2.0
+;; Author: Jacob Helwig <jacob+ack@technosorcery.net>
 ;; Homepage: http://technosorcery.net
+;; Version: 0.2.0
+;; URL: https://github.com/jhelwig/ack-and-a-half
 ;;
 ;; This file is NOT part of GNU Emacs.
 ;;
@@ -39,15 +40,15 @@
 ;;
 ;; Add the following to your .emacs:
 ;;
-;; (add-to-list 'load-path "/path/to/ack-and-a-half")
-;; (autoload 'ack-and-a-half-same "ack-and-a-half" nil t)
-;; (autoload 'ack-and-a-half "ack-and-a-half" nil t)
-;; (autoload 'ack-and-a-half-find-file-same "ack-and-a-half" nil t)
-;; (autoload 'ack-and-a-half-find-file "ack-and-a-half" nil t)
-;; (defalias 'ack 'ack-and-a-half)
-;; (defalias 'ack-same 'ack-and-a-half-same)
-;; (defalias 'ack-find-file 'ack-and-a-half-find-file)
-;; (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
+;;     (add-to-list 'load-path "/path/to/ack-and-a-half")
+;;     (autoload 'ack-and-a-half-same "ack-and-a-half" nil t)
+;;     (autoload 'ack-and-a-half "ack-and-a-half" nil t)
+;;     (autoload 'ack-and-a-half-find-file-same "ack-and-a-half" nil t)
+;;     (autoload 'ack-and-a-half-find-file "ack-and-a-half" nil t)
+;;     (defalias 'ack 'ack-and-a-half)
+;;     (defalias 'ack-same 'ack-and-a-half-same)
+;;     (defalias 'ack-find-file 'ack-and-a-half-find-file)
+;;     (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
 ;;
 ;; Run `ack' to search for all files and `ack-same' to search for
 ;; files of the same type as the current buffer.
