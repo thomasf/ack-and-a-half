@@ -64,7 +64,7 @@
   (set (make-local-variable 'truncate-lines) t)
   (set (make-local-variable 'compilation-disable-input) t)
   (let ((smbl  'compilation-ack-nogroup)
-        (pttrn '("^\\([^:\n]+?\\):\\([0-9]+\\):" 1 2)))
+        (pttrn '("^\\([^:\n]+?\\):\\([0-9]+\\):\\([0-9]+\\):" 1 2 3)))
     (set (make-local-variable 'compilation-error-regexp-alist) (list smbl))
     (set (make-local-variable 'compilation-error-regexp-alist-alist) (list (cons smbl pttrn))))
   (set (make-local-variable 'compilation-error-face) grep-hit-face))
@@ -299,7 +299,7 @@ This is intended to be used in `ack-and-a-half-root-directory-functions'."
   (format "--%s%s" (if enabled "" "no") name))
 
 (defun ack-and-a-half-arguments-from-options (regexp)
-  (let ((arguments (list "--nocolor" "--nogroup"
+  (let ((arguments (list "--nocolor" "--nogroup" "--column"
                          (ack-and-a-half-option "smart-case" (eq ack-and-a-half-ignore-case 'smart))
                          (ack-and-a-half-option "env" ack-and-a-half-use-environment))))
     (unless ack-and-a-half-ignore-case
