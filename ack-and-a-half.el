@@ -1,27 +1,37 @@
 ;;; ack-and-a-half.el --- Yet another front-end for ack
 ;;
-;; Copyright (C) 2011 Jacob Helwig
+;; Copyright (C) 2012 Jacob Helwig <jacob@technosorcery.net>
+;; Alexey Lebedeff <binarin@binarin.ru>
+;; Andrew Stine <stine.drew@gmail.com>
+;; Gleb Peregud <gleber.p@gmail.com>
+;; Kim van Wyk <vanwykk@gmail.com>
+;; Ronaldo M. Ferraz <ronaldoferraz@gmail.com>
+;; Ryan Thompson <rct@thompsonclan.org>
 ;;
-;; Author: Jacob Helwig <jacob+ack * technosorcery.net>
-;; Version: 0.1.1
+;; Author: Jacob Helwig <jacob+ack@technosorcery.net>
 ;; Homepage: http://technosorcery.net
+;; Version: 0.2.1
+;; URL: https://github.com/jhelwig/ack-and-a-half
 ;;
 ;; This file is NOT part of GNU Emacs.
 ;;
-;; This program is free software; you can redistribute it and/or
-;; modify it under the terms of the GNU General Public License as
-;; published by the Free Software Foundation; either version 2, or (at
-;; your option) any later version.
+;; Permission is hereby granted, free of charge, to any person obtaining a copy of
+;; this software and associated documentation files (the "Software"), to deal in
+;; the Software without restriction, including without limitation the rights to
+;; use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+;; of the Software, and to permit persons to whom the Software is furnished to do
+;; so, subject to the following conditions:
 ;;
-;; This program is distributed in the hope that it will be useful, but
-;; WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-;; General Public License for more details.
+;; The above copyright notice and this permission notice shall be included in all
+;; copies or substantial portions of the Software.
 ;;
-;; You should have received a copy of the GNU General Public License
-;; along with this program ; see the file COPYING.  If not, write to
-;; the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-;; Boston, MA 02111-1307, USA.
+;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+;; AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+;; OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+;; SOFTWARE.
 ;;
 ;;; Commentary:
 ;;
@@ -322,7 +332,8 @@ This is intended to be used in `ack-and-a-half-root-directory-functions'."
 (defun ack-and-a-half-arguments-from-options (regexp)
   (let ((arguments (list "--nocolor" "--nogroup" "--column"
                          (ack-and-a-half-option "smart-case" (eq ack-and-a-half-ignore-case 'smart))
-                         (ack-and-a-half-option "env" ack-and-a-half-use-environment))))
+                         (ack-and-a-half-option "env" ack-and-a-half-use-environment)
+                         "--")))
     (unless ack-and-a-half-ignore-case
       (push "-i" arguments))
     (unless regexp
