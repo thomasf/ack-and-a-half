@@ -333,7 +333,7 @@ This is intended to be used in `ack-and-a-half-root-directory-functions'."
   (let ((arguments (list "--nocolor" "--nogroup" "--column"
                          (ack-and-a-half-option "smart-case" (eq ack-and-a-half-ignore-case 'smart))
                          (ack-and-a-half-option "env" ack-and-a-half-use-environment)
-                         "--")))
+                         )))
     (unless ack-and-a-half-ignore-case
       (push "-i" arguments))
     (unless regexp
@@ -363,14 +363,17 @@ When optional fourth argument is non-nil, treat the from as a regular expression
   "Wrap in single quotes, and quote existing single quotes to make shell safe."
   (concat "'" (ack-and-a-half-string-replace "'" "'\\''" string) "'"))
 
-(defun ack-and-a-half-run (directory regexp &rest arguments)
+(defun ack-and-a-half-run (directory regexp pattern &rest arguments)
   "Run ack in DIRECTORY with ARGUMENTS."
   (let ((default-directory (if directory
                                (file-name-as-directory (expand-file-name directory))
                              default-directory)))
     (setq arguments (append ack-and-a-half-arguments
-                            (nconc (ack-and-a-half-arguments-from-options regexp)
-                                   arguments)))
+                            (ack-and-a-half-arguments-from-options regexp)
+                            arguments
+                            (list "--")
+                            (list (ack-and-a-half-shell-quote pattern))
+                            ))
     (compilation-start (mapconcat 'identity (nconc (list ack-and-a-half-executable) arguments) " ")
                        'ack-and-a-half-mode)))
 
@@ -416,7 +419,7 @@ DIRECTORY is the root directory.  If called interactively, it is determined by
 `ack-and-a-half-project-root-file-patterns'.  The user is only prompted, if
 `ack-and-a-half-prompt-for-directory' is set."
   (interactive (ack-and-a-half-interactive))
-  (ack-and-a-half-run directory regexp (ack-and-a-half-shell-quote pattern)))
+  (ack-and-a-half-run directory regexp pattern))
 
 ;;;###autoload
 (defun ack-and-a-half-same (pattern &optional regexp directory)
@@ -433,7 +436,7 @@ The user is only prompted, if `ack-and-a-half-prompt-for-directory' is set.`"
   (interactive (ack-and-a-half-interactive))
   (let ((type (ack-and-a-half-type)))
     (if type
-        (apply 'ack-and-a-half-run directory regexp (append type (list (ack-and-a-half-shell-quote pattern))))
+        (apply 'ack-and-a-half-run directory regexp pattern type)
       (ack-and-a-half pattern regexp directory))))
 
 ;;;###autoload
