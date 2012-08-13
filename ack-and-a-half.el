@@ -90,6 +90,13 @@
   :group 'ack-and-a-half
   :type 'file)
 
+(defcustom ack-and-a-half-buffer-name "*Ack-and-a-half*"
+  "*The name of the ack-and-a-half buffer"
+  :group 'ack-and-a-half
+  :type 'string)
+
+(defun ack-buffer-name (mode) ack-and-a-half-buffer-name)
+
 (defcustom ack-and-a-half-arguments nil
   "*Extra arguments to pass to ack."
   :group 'ack-and-a-half
@@ -375,6 +382,8 @@ When optional fourth argument is non-nil, treat the from as a regular expression
                             (list "--")
                             (list (ack-and-a-half-shell-quote pattern))
                             ))
+    (make-local-variable 'compilation-buffer-name-function)
+    (setq compilation-buffer-name-function 'ack-buffer-name)
     (compilation-start (mapconcat 'identity (nconc (list ack-and-a-half-executable) arguments) " ")
                        'ack-and-a-half-mode)))
 
