@@ -3,6 +3,7 @@
 ;; Copyright (C) 2012 Jacob Helwig <jacob@technosorcery.net>
 ;; Alexey Lebedeff <binarin@binarin.ru>
 ;; Andrew Stine <stine.drew@gmail.com>
+;; Derek Chen-Becker <derek@precog.com>
 ;; Gleb Peregud <gleber.p@gmail.com>
 ;; Kim van Wyk <vanwykk@gmail.com>
 ;; Ronaldo M. Ferraz <ronaldoferraz@gmail.com>

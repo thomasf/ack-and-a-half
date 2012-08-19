@@ -39,6 +39,7 @@ Many thanks to the following people for their contributions:
 
 * Alexey Lebedeff
 * Andrew Stine
+* Derek Chen-Becker
 * Gleb Peregud
 * Kim van Wyk
 * Ronaldo M. Ferraz
