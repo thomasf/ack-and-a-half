@@ -384,9 +384,10 @@ When optional fourth argument is non-nil, treat the from as a regular expression
                             (list (ack-and-a-half-shell-quote pattern))
                             ))
     (make-local-variable 'compilation-buffer-name-function)
-    (setq compilation-buffer-name-function 'ack-buffer-name)
-    (compilation-start (mapconcat 'identity (nconc (list ack-and-a-half-executable) arguments) " ")
-                       'ack-and-a-half-mode)))
+    (let (compilation-buffer-name-function)
+      (setq compilation-buffer-name-function 'ack-buffer-name)
+      (compilation-start (mapconcat 'identity (nconc (list ack-and-a-half-executable) arguments) " ")
+                         'ack-and-a-half-mode))))
 
 (defun ack-and-a-half-read-file (prompt choices)
   (if ido-mode
