@@ -44,3 +44,4 @@ Many thanks to the following people for their contributions:
 * Kim van Wyk
 * Ronaldo M. Ferraz
 * Ryan Thompson
+* Simão Mata
