@@ -76,6 +76,7 @@
         (pttrn '("^\\([^:\n]+?\\):\\([0-9]+\\):\\([0-9]+\\):" 1 2 3)))
     (set (make-local-variable 'compilation-error-regexp-alist) (list smbl))
     (set (make-local-variable 'compilation-error-regexp-alist-alist) (list (cons smbl pttrn))))
+  (set (make-local-variable 'compilation-process-setup-function) 'ack-and-a-half-mode-setup)
   (set (make-local-variable 'compilation-error-face) grep-hit-face))
 
 (defgroup ack-and-a-half nil "Yet another front end for ack."
@@ -415,6 +416,20 @@ When optional fourth argument is non-nil, treat the from as a regular expression
     (goto-char (point-min))
     (re-search-forward " +")
     (buffer-substring (point) (point-at-eol))))
+
+(defun ack-and-a-half-mode-setup ()
+  "Setup compilation variables and buffer for `ack-and-a-half'.
+Set up `compilation-exit-message-function'."
+  (set (make-local-variable 'compilation-exit-message-function)
+       (lambda (status code msg)
+         (if (eq status 'exit)
+             (cond ((and (zerop code) (buffer-modified-p))
+                    '("finished (matches found)\n" . "matched"))
+                   ((not (buffer-modified-p))
+                    '("finished with no matches found\n" . "no match"))
+                   (t
+                    (cons msg code)))
+           (cons msg code)))))
 
 ;;; Public interface ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
