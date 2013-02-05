@@ -11,7 +11,7 @@
 ;;
 ;; Author: Jacob Helwig <jacob+ack@technosorcery.net>
 ;; Homepage: http://technosorcery.net
-;; Version: 1.1.2
+;; Version: 1.1.3
 ;; URL: https://github.com/jhelwig/ack-and-a-half
 ;;
 ;; This file is NOT part of GNU Emacs.
